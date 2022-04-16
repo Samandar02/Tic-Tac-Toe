@@ -1,0 +1,21 @@
+<div [ngClass]="isGameOver ? 'game-over-bg' : 'bg'"></div>
+<div class="container">
+  <ng-container *ngIf="isGameOver">
+    <div class="game-over">
+      <p *ngIf="winner == 'X'||winner == '0' else noWinner">{{ winner }} oyinchisi yutdi</p>
+      <ng-template #noWinner>
+        <p>hech kim yutmadi! </p>
+      </ng-template>
+      <p>5 soniyadan keyin o'yin qayta boshlanadi</p>
+      <button class="btn" (click)="newGame(0)">Yangi o'yin</button>
+    </div>
+  </ng-container>
+  <div
+    *ngFor="let item of blocks; index as i"
+    (click)="checking(i)"
+    class="block checked"
+  >
+    <p>{{ item }}</p>
+  </div>
+  <button class="btn" (click)="newGame(0)">Yangi o'yin</button>
+</div>
